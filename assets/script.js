@@ -56,6 +56,8 @@ const questions = [
       correctAnswer: `Storing numbers, dates, or other values`,
     },
   ];
+
+//TIMER  
   
 //TIMER FUNCTION
 function time() {
@@ -83,5 +85,18 @@ function stopTimer(){
     }
 }
 
-time();
-startTimer();
+//START QUIZ  
+/*Description: Upon user clicking Start Button,  the instructions and start button will disappear, 
+the timer will begin to countdown, and the first question will display*/
+
+startButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    //Start Timer
+    startTimer();
+    //Hide Quiz Header and Start Display
+    quizHeader.style.display = "none";
+    startDisplay.style.display = "none";
+    //Start Questions
+    createQuestionDisplay();
+  });
+  
