@@ -4,6 +4,7 @@
 let index = 0;
 const timer = document.querySelector("#time");
 let secondsLeft = 75;
+let timerReturn = " ";
 let checkAnswerDisplay = document.createElement("p");
 let userName = " ";
 let user = [];
@@ -77,17 +78,19 @@ function time() {
   };
 
 //START TIMER FUNCTION
-function startTimer(){
+function startTimer() {
+
     let timerInterval = setInterval(time, 1000);
-}
+    return timerInterval;
+
+    };
 
 //STOP TIMER FUNCTION
-function stopTimer(){
+function stopTimer() {
 
-    if(secondsLeft === 0 || endQuiz()) {
-    clearInterval(timerInterval);
-    }
-}
+    clearInterval(timerReturn);
+    timer.textContent = 0; 
+}    
 
 //START QUIZ  
 /*Description: Upon user clicking Start Button,  the instructions and start button will disappear, 
@@ -96,7 +99,7 @@ the timer will begin to countdown, and the first question will display*/
 startButton.addEventListener("click", function (event) {
     event.preventDefault();
     //Start Timer
-    startTimer();
+    timerReturn = startTimer();
     //Hide Quiz Header and Start Display
     quizHeader.style.display = "none";
     startDisplay.style.display = "none";
@@ -110,19 +113,27 @@ then the answers that correlate to that question are displayed as a list of butt
 Once the answer is choosen the checkAnswer function determines if an answer is correct or incorrect.*/
 
 function createQuestionDisplay() {
-    const ul = document.getElementById("qa");
+    let ul = document.getElementById("qa");
     const currentQ = questions[index];
-    ul.textContent = currentQ.question;
+    let li = document.createElement("li");
+    const questionh1 = document.createElement("h1");
+    questionh1.textContent = currentQ.question;
     console.log(currentQ);//Test
+    li.className = "my-2";
+    while (ul.hasChildNodes()) {
+        ul.removeChild(ul.firstChild);
+    }
+    li.appendChild(questionh1);
+    ul.appendChild(li);
     for (let i = 0; i < currentQ.answers.length; i++) {
       var answerChoices = currentQ.answers[i];
-      const li = document.createElement("li");
+      var answersli = document.createElement("li");
       var button = document.createElement("button");
       button.setAttribute("value", answerChoices);
       button.textContent = answerChoices;
-      button.className += "btn btn-primary";
-      ul.appendChild(li);
-      li.appendChild(button);
+      button.className += "btn btn-primary my-2";
+      ul.appendChild(answersli);
+      answersli.appendChild(button);
       button.onclick = checkAnswer;
     }
   }
@@ -213,7 +224,7 @@ function endQuiz() {
         //Function creates input area
         highscoresDisplay();
         //Function stops timer once time is logged as the score.
-        // stopTimer();   
+        stopTimer();   
       };
 
       //Displays Highscore Input Area in HTML
@@ -269,6 +280,8 @@ function endQuiz() {
       clearButton.onclick = function (event) {
         event.preventDefault;
         window.localStorage.clear();
+        highscoreLatest.textContent = ' ';
+
       };
 
       //Displays highscore information
@@ -278,6 +291,9 @@ function endQuiz() {
       highscoreDisplay.appendChild(highscoreLatest);
       highscoreDisplay.appendChild(goBackButton);
       highscoreDisplay.appendChild(clearButton);
+
+      //Disable View Highscore Button
+      highscoreButton.disabled = true;
     }
     
     
