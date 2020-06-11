@@ -1,9 +1,7 @@
 //Assignment Code
 
 //Variables
-const timeEl = document.querySelector("#time");
-const mainEl = document.getElementById("main");
-
+const timer = document.querySelector("#time");
 let secondsLeft = 75;
 
 const questions = [
@@ -60,27 +58,30 @@ const questions = [
   ];
   
 //TIMER FUNCTION
-function setTime() {
-  var timerInterval = setInterval(function() {
+function time() {
+    
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
-
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      sendMessage();
+    
+    if(secondsLeft <= 0) {
+      secondsLeft = 0;
     }
 
-  }, 1000);
+    timer.textContent = secondsLeft;
+
+  };
+
+//START TIMER FUNCTION
+function startTimer(){
+    let timerInterval = setInterval(time, 1000);
 }
 
-function sendMessage() {
-  timeEl.textContent = " ";
+//STOP TIMER FUNCTION
+function stopTimer(){
 
-  var imgEl = document.createElement("img");
-
-  imgEl.setAttribute("src", "images/image_1.jpg");
-  mainEl.appendChild(imgEl);
-
+    if(secondsLeft === 0 || endQuiz()) {
+    clearInterval(timerInterval);
+    }
 }
 
-setTime();
+time();
+startTimer();
