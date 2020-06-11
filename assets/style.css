@@ -5,3 +5,8 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+/*Removes the bullets from the answer choices in the question list*/
+#qa {
+    list-style: none;
+}
+
