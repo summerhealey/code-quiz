@@ -9,6 +9,14 @@ let checkAnswerDisplay = document.createElement("p");
 let userName = " ";
 let user = [];
 let highscore = [];
+let scoreArray = localStorage.getItem('highscore');
+
+if (scoreArray) { // this checks if scoreArray already exists 
+    scoreArray = JSON.parse(scoreArray);
+} else {
+    scoreArray = [];
+}
+
 const questions = [
     {
       question: `Where in our code do we keep the styling?`,
@@ -173,6 +181,8 @@ function checkAnswer() {
 /*Function Description: */ 
 
 function endQuiz() {
+    //Function stops timer once time is logged as the score.
+    stopTimer(); 
     
     /* Hide quiz instructions and start button as well as the questions and answers 
     - including the incorrect or correct display at the buttom of the page*/
@@ -208,23 +218,24 @@ function endQuiz() {
         console.log(userName);
         //STORE SCORE
         function storeHighscore() {
-          localStorage.setItem("highscore", JSON.stringify(score));
+            //localStorage.getItem('highscore')
+            // if the above is a value (scoreArray) push new object ie. { user: userName, score: score }
+            scoreArray.push({ user: userName, score: score });
+            localStorage.setItem('highscore', JSON.stringify(scoreArray))
+            // scoreArray = [{ user: userName, score: score },  { user: userName, score: score }]
         }
         //STORE USER
-        function storeUser() {
-          localStorage.setItem("user", JSON.stringify(userName));
-        }
+        // function storeUser() {
+        //   localStorage.setItem("user", JSON.stringify(userName));
+        // }
         //LOGGED FUNCTION 
         /*Description: The username and score are stored IF the current score 
         is higher than the previously stored highscore*/
-        if (score > JSON.parse(localStorage.getItem("highscore"))) {
-          storeHighscore();
-          storeUser();
-        }
+        // if (score > JSON.parse(localStorage.getItem("highscore"))) {
+        storeHighscore();
+        // }
         //Function creates input area
-        highscoresDisplay();
-        //Function stops timer once time is logged as the score.
-        stopTimer();   
+        highscoresDisplay();  
       };
 
       //Displays Highscore Input Area in HTML
@@ -257,13 +268,20 @@ function endQuiz() {
       //Creates "Highscore" Header and collects data for localStorage
       const highscoreHeader = document.createElement("h1");
       const highscoreHeaderText = document.createTextNode("Highscores");
-      let highscoreLatest = document.createElement("p");
-      let highscoreLatestText = document.createTextNode(
-        JSON.parse(localStorage.getItem("user")) +
-          " - " +
-          JSON.parse(localStorage.getItem("highscore"))
-      );
-
+      const highscoreList = document.createElement("div");
+      highscoreHeader.appendChild(highscoreHeaderText);
+      highscoreDisplay.appendChild(highscoreHeader);
+      for (let i = 0; i < scoreArray.length; i++) {
+        let highscoreLatest = document.createElement("p");
+        let highscoreLatestText = document.createTextNode(
+            scoreArray[i].user +
+            " - " +
+            scoreArray[i].score
+        );
+        highscoreLatest.appendChild(highscoreLatestText);
+        highscoreList.appendChild(highscoreLatest);
+      };
+        highscoreDisplay.appendChild(highscoreList);
       //GO BACK BUTTON
       const goBackButton = document.createElement("button");
       goBackButton.innerHTML = "Go Back";
@@ -280,15 +298,11 @@ function endQuiz() {
       clearButton.onclick = function (event) {
         event.preventDefault;
         window.localStorage.clear();
-        highscoreLatest.textContent = ' ';
+        highscoreList.innerHTML = '';
 
       };
 
       //Displays highscore information
-      highscoreHeader.appendChild(highscoreHeaderText);
-      highscoreDisplay.appendChild(highscoreHeader);
-      highscoreLatest.appendChild(highscoreLatestText);
-      highscoreDisplay.appendChild(highscoreLatest);
       highscoreDisplay.appendChild(goBackButton);
       highscoreDisplay.appendChild(clearButton);
 
