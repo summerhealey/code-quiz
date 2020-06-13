@@ -29,7 +29,7 @@ const questions = [
       correctAnswer: `all of the above`,
     },
     {
-      question: `Why so JavaScript and Java have similar name?`,
+      question: `Why does JavaScript and Java have similar names?`,
       answers: [
         `JavaScript is a stripped-down version of Java`,
         `JavaScript's syntax is loosely based on Java's`,
@@ -97,7 +97,7 @@ function startTimer() {
 function stopTimer() {
 
     clearInterval(timerReturn);
-    timer.textContent = 0; 
+    timer.textContent = ''; 
 }    
 
 //START QUIZ  
