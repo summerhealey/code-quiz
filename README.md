@@ -34,7 +34,12 @@ Functional, deployed application includes the following:
 
 The following animation demonstrates the client's request for application functionality:
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+Client Demo:
+
+![code quiz](./assets/images/04-web-apis-homework-demo.gif)
+
+Application Demo: 
+![Deployed Application Screenshot](./assets/images/codeQuiz.jpg)
 
 Validation of Site Available Here: 
 

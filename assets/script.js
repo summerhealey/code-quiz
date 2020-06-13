@@ -156,7 +156,7 @@ function checkAnswer() {
     if (this.value !== questions[index].correctAnswer) {
       console.log(this.value);
       checkAnswerDisplay.textContent = "Incorrect";
-      checkAnswerDisplay.style.textAlign ="left";
+      checkAnswerDisplay.style.textAlign ="center";
       answerCheck.appendChild(checkAnswerDisplay);
       secondsLeft = secondsLeft - 10; //Time deduction
       console.log(secondsLeft); //Test
@@ -167,7 +167,7 @@ function checkAnswer() {
       }
     } else {
       checkAnswerDisplay.textContent = "Correct";
-      checkAnswerDisplay.style.textAlign ="left";
+      checkAnswerDisplay.style.textAlign ="center";
       answerCheck.appendChild(checkAnswerDisplay);
     }
     index++;
@@ -200,12 +200,13 @@ function endQuiz() {
       scoreDisplay.textContent = "Your final score is " + score +".";
       const initialsInputLabel = document.createElement("LABEL");
       initialsInputLabel.textContent = "Enter initials: ";
+      initialsInputLabel.className += "mr-1"
       const initialsInput = document.createElement("INPUT");
       initialsInput.setAttribute("type", "text");
       initialsInput.setAttribute("value", "SLH");
       const submitButton = document.createElement("button");
       submitButton.innerHTML = "Submit";
-      submitButton.className += "btn btn-primary";
+      submitButton.className += "btn btn-primary ml-1";
       
       //SUBMIT HIGHSCORE
       /*Description: Upon clicking the submit button, the username and score is saved 
@@ -252,6 +253,7 @@ function endQuiz() {
     const highscoreButton = document.getElementById("highscorebtn");
     highscoreButton.onclick = function (event) {
       event.preventDefault;
+      stopTimer();
       highscoresDisplay();
     };
 
@@ -285,7 +287,7 @@ function endQuiz() {
       //GO BACK BUTTON
       const goBackButton = document.createElement("button");
       goBackButton.innerHTML = "Go Back";
-      goBackButton.className += "btn btn-primary";
+      goBackButton.className += "btn btn-primary mr-3";
       goBackButton.onclick = function (event) {
         event.preventDefault;
         window.location.reload();
