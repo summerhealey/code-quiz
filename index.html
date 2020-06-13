@@ -10,80 +10,80 @@
     <link rel="stylesheet" href="./assets/style.css" />
 
 </head>
-
+<body>
     <!--Page Header Starts with Timer and Highscore Displayed-->
     <header class="container">
             <div class="row">
               <div class="col text-left">
-                <button class="btn" id=highscorebtn href="">View Highscores</button>
+                <button class="btn" id=highscorebtn>View Highscores</button>
               </div>
               <div></div>
-              <div class="col text-right" id="time">Timer</div> 
+              <div class="col text-right" id="time">Timer</div>
+            </div>   
     </header>
     <!--Page Header Ends-->
-    <body>
+    
         <!--Code Quiz Content Begins-->
-        <main>
-            <div class="container">
-                <!--Code Title-->
-                <div class="row text-center" id="quizHeader">
-                    <div class="col">
-                        <h1>Coding Quiz</h1>
-                    </div>
+    <main>
+        <div class="container">
+            <!--Code Title-->
+            <div class="row text-center" id="quizHeader">
+                <div class="col">
+                    <h1>Coding Quiz</h1>
                 </div>
-                <!--Start Content Display Begins-->
-                <div id="startDisplay">
-                    <div class="row text-center">
-                        <div class="col-md-12 text-center">
-                            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
-                            <button class="btn btn-primary" id="startButton">Start</button>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-            <!--Start Content Display Ends-->
-
-            <!--Start Question Content Display Begins-->
-            <div class="row">
-                <div class="col"></div>
+            </div>
+            <!--Start Content Display Begins-->
+            <div id="startDisplay">
+                <div class="row text-center">
                     <div class="col-md-12 text-center">
-                        <ul id="qa"></ul>
+                        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
+                        <button class="btn btn-primary" id="startButton">Start</button>
                     </div>
-                <div class="col"></div>
-            </div>    
-            <div class="row">
-                <div class="col"></div>
-                    <div class="col-md-12 text-center">  
-                        <div id="answerCheck"></div>  
-                    </div>
-                <div class="col"></div>
-            </div>
-            <!--Start Question Content Display Ends-->
-            
-            <!--Highscore Content Input Begins-->
-                <div class="row">
-                    <div class="col"></div>
-                        <div class="col-md-12 text-center">  
-                            <div id="highscoreContent"></div>  
-                        </div>
-                    <div class="col"></div>
                 </div>
             </div>
-            <!--Highscore Content Input Ends-->
+        </div>    
+        <!--Start Content Display Ends-->
 
-            <!--Highscore Display Content Begins-->
+        <!--Start Question Content Display Begins-->
+        <div class="row">
+            <div class="col"></div>
+                <div class="col-md-12 text-center">
+                    <ul id="qa"></ul>
+                </div>
+            <div class="col"></div>
+        </div>    
+        <div class="row">
+            <div class="col"></div>
+                <div class="col-md-12 text-center">  
+                    <div id="answerCheck"></div>  
+                </div>
+            <div class="col"></div>
+        </div>
+        <!--Start Question Content Display Ends-->
+            
+        <!--Highscore Content Input Begins-->
             <div class="row">
                 <div class="col"></div>
                     <div class="col-md-12 text-center">  
-                        <div id="highscoreDisplay"></div>  
+                        <div id="highscoreContent"></div>  
                     </div>
                 <div class="col"></div>
             </div>
-            <!--Highscore Display Content Ends-->
+        <!--Highscore Content Input Ends-->
 
-        </main>
-        <!--Code Quiz Content Ends-->
+        <!--Highscore Display Content Begins-->
+        <div class="row">
+            <div class="col"></div>
+                <div class="col-md-12 text-center">  
+                    <div id="highscoreDisplay"></div>  
+                </div>
+            <div class="col"></div>
+        </div>
+        <!--Highscore Display Content Ends-->
 
-        <script src="./assets/script.js"></script>
-    </body>
+    </main>
+    <!--Code Quiz Content Ends-->
+
+    <script src="./assets/script.js"></script>
+</body>
 </html>

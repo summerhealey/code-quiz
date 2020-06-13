@@ -39,7 +39,7 @@ Client Demo:
 ![code quiz](./assets/images/04-web-apis-homework-demo.gif)
 
 Application Demo: 
-![Deployed Application Screenshot](./assets/images/codeQuiz.jpg)
+![Deployed Application Screenshot](./assets/images/codeQuiz.gif)
 
 Validation of Site Available Here: 
 

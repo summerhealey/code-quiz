@@ -253,6 +253,7 @@ function endQuiz() {
     const highscoreButton = document.getElementById("highscorebtn");
     highscoreButton.onclick = function (event) {
       event.preventDefault;
+      answerCheck.style.display = "none";
       stopTimer();
       highscoresDisplay();
     };
