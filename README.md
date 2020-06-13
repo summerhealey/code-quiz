@@ -41,7 +41,7 @@ Client Demo:
 Application Demo: 
 ![Deployed Application Screenshot](./assets/images/codeQuiz.gif)
 
-Validation of Site Available Here: 
+Validation of Site Available Here: https://validator.w3.org/nu/?doc=https%3A%2F%2Fsummerhealey.github.io%2Fcode-quiz%2F 
 
 # Criteria Determination: 
 
